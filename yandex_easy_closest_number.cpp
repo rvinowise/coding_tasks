@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//¡yandex's delimiter (whitespace) doesn't work with online compilers. use comma to see the result!
 constexpr char delimiter = ',';
 
 

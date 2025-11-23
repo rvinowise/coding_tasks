@@ -2,10 +2,15 @@
 fun main() {
     var line: String?
     var words: Set<String> = setOf();
+    var line_i = 0;
     while (readlnOrNull().also {line = it} != null) {
-        words = words union line!!.split("\\s+".toRegex()).toSet()
+        line_i++;
+        if (!line!!.isEmpty()) {
+            words = words union line!!.split("\\s+".toRegex()).toSet()
+        }
+        //println("line# $line_i words ${words.size}: ${words.joinToString(" ")}")
     }
     var words_amount = words.size
-    //println("words: $words")
+    
     println(words_amount)
 }

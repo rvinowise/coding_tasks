@@ -1,15 +1,17 @@
 // yandex task 1. Количество слов в тексте
 fun main() {
     var line: String?
-    var words: Set<String> = setOf();
+    var words: MutableSet<String> = mutableSetOf();
     var line_i = 0;
     while (readlnOrNull().also {line = it} != null) {
         line_i++;
         if (!line!!.isEmpty()) {
-            words = words union line!!.split("\\s+".toRegex()).toSet()
+            //println("split line #$line_i: ${line!!.split("\\s+".toRegex())}")
+            words = (words union line!!.split("\\s+".toRegex())).toMutableSet()
         }
         //println("line# $line_i words ${words.size}: ${words.joinToString(" ")}")
     }
+    words.remove("");
     var words_amount = words.size
     
     println(words_amount)

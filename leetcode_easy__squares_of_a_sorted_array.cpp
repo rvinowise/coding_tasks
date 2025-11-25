@@ -1,4 +1,6 @@
 // leetcode 977 squares of a sorted array
+
+/* this is not the most intuitive solution, but it's faster than resorting to a sorting function */
 #include <sstream>
 #include <iostream>
 #include <vector>

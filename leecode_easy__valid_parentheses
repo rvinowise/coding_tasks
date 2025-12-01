@@ -1,0 +1,39 @@
+// leecode 20 valid parentheses
+bool is_open(char symbol) {
+    return
+        symbol == '(' ||
+        symbol == '[' ||
+        symbol == '{';
+}
+
+bool is_matching_closing(char opening, char closing) {
+    return 
+        opening == '(' && closing==')'
+        ||
+        opening == '[' && closing==']'
+        ||
+        opening == '{' && closing=='}';
+}
+
+class Solution {
+public:
+    bool isValid(string text) {
+        stack<char> symbols;
+
+        for(auto symbol: text) {
+            if (is_open(symbol)) {
+                symbols.push(symbol);
+            } else if (
+                symbols.size() > 0
+                &&
+                is_matching_closing(symbols.top(), symbol)
+            ) {
+                symbols.pop();
+            } else {
+                return false;
+            }
+        }
+
+        return symbols.size() == 0;
+    }
+};

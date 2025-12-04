@@ -1,0 +1,54 @@
+/* leetcode medium 122. Best Time to Buy and Sell Stock II
+i solved it a couple of days after reeding the explanation, 
+and right after reading the explanation for "Best Time to Buy and Sell Stock I"
+*/
+
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int max_profit{0};
+        //int prev_buying_day{0};
+        int buy_price{prices[0]};
+        for(int i_day=1; i_day < prices.size(); i_day++) {
+            cout 
+                << " checking day " << i_day
+                << endl;
+            if (prices[i_day] < prices[i_day-1]) {
+                buy_price = prices[i_day];
+                cout 
+                    << " updating buy_price= " << buy_price
+                    << endl;
+            }
+            if (prices[i_day] > prices[i_day-1]) {
+                int this_profit = prices[i_day] - prices[i_day-1];
+                
+                cout 
+                    << " updating max_profit= " << max_profit 
+                    << " + " << this_profit 
+                    << " = " << max_profit+this_profit
+                    << endl;
+                    
+                max_profit += this_profit;
+                
+            }
+        }
+        return max_profit;
+    }
+};
+
+int main() {
+    
+    vector<int> prices {7,1,5,3,6,4};
+    auto result = Solution().maxProfit(prices);
+    
+    cout << "result " << result << endl;
+    
+    
+    return 0;
+}
